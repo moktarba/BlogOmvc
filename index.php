@@ -1,3 +1,12 @@
+<?php
+  try {
+    $pdo = new PDO('mysql:host=localhost;dbname=blogMvc; charset=utf8', 'root', '');
+  } catch (\Exception $e) {
+    die('Erreur : '.$e->getMessage());
+  }
+  $req = $pdo->query("SELECT title, description, date_created   FROM post ORDER BY date_created DESC LIMIT 0, 5");
+  // var_dump($posts); die();
+ ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,20 +32,9 @@
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
         <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
       </div>
-      <?php
-        try {
-          $pdo = new PDO('mysql:host=localhost;dbname=blogMvc; charset=utf8', 'root', '');
-        } catch (\Exception $e) {
-          die('Erreur : '.$e->getMessage());
-        }
-       ?>
+
       <div class="row">
-        <?php
 
-        $req = $pdo->query("SELECT title, description, date_created   FROM post ORDER BY date_created DESC LIMIT 0, 5");
-
-        // var_dump($posts); die();
-        ?>
         <div class="col-md-12">
           <?php
             while ($posts = $req->fetch()) {
