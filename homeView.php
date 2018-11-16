@@ -28,10 +28,10 @@
 
         <div class="col-md-12">
           <?php
-            while ($posts = $req->fetch()) {
+            while ($post = $posts->fetch()) {
               echo '<div class="post col-lg-6 float-md-left">';
-              echo '<h3>'.$posts['title'].'</h3>';
-              echo '<p>'.$posts['description'].'</p>';
+              echo '<h3>'.$post['title'].' <span style="font-size:10px" class="badge badge-secondary">'.$post['date_created_fr'].'</span></h3>';
+              echo '<p>'.$post['description'].'</p>';
               echo '</div>';
             }
           ?>
@@ -44,12 +44,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
+    <p></p>
     <footer>
       <nav class="navbar fixed-bottom navbar-light bg-light">
         <a class="navbar-brand" href="#">Fixed bottom</a>
       </nav>
     </footer>
-    <?php $pdo->closeCursor(); ?>
+    <?php $posts->closeCursor(); ?>
   </body>
 </html>
